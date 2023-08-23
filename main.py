@@ -9,9 +9,10 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
 
 # Inicialização da aplicação Flask
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, template_folder='templates', static_folder='static')
 app.debug = True  # Ativa o modo de depuração
-CORS(app)  # habilitar CORS para todas as rotas
+# Configure CORS para permitir solicitações de origens específicas
+CORS(app, origins=["http://localhost:9999"])
 
 # Configuração do banco de dados SQLAlchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://usr_dev_3:rHBmUibpQ8E42HV@localhost/dev_imob'
@@ -59,7 +60,7 @@ class Users(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('index.php')
+    return render_template('new-viability-study.php')
 
 # Rota para inserir dados na tabela 'viability'
 @app.route('/api/insere_dados', methods=['POST'])
@@ -130,4 +131,5 @@ def insere_dados():
 
 # Execução da aplicação Flask
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get("PORT", 9999))
+    app.run(host="0.0.0.0", port=port)
