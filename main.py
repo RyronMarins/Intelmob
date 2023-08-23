@@ -2,14 +2,14 @@
 import os
 import traceback
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from openpyxl import load_workbook
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
 
 # Inicialização da aplicação Flask
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 app.debug = True  # Ativa o modo de depuração
 CORS(app)  # habilitar CORS para todas as rotas
 
@@ -56,6 +56,10 @@ class Users(db.Model):
     allowmarketing = db.Column(db.Integer, nullable=False, default=1)
     registry_date = db.Column(db.DateTime, nullable=False, server_default='current_timestamp()')
     isManager = db.Column(db.Integer, default=0)
+
+@app.route('/')
+def index():
+    return render_template('index.php')
 
 # Rota para inserir dados na tabela 'viability'
 @app.route('/api/insere_dados', methods=['POST'])
