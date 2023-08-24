@@ -4,7 +4,7 @@
    class="light-style layout-navbar-fixed layout-menu-fixed"
    dir="ltr"
    data-theme="theme-default"
-   data-assets-path="./static/assets/"
+   data-assets-path="./assets/"
    data-template="vertical-menu-template">
    <head>
          <?php
@@ -140,31 +140,31 @@
                                        <h5 class="card-header">Formulário de Solicitação de Estudo de Viabilidade</h5>
                                        <div class="card-body">
                                           <div class="mb-3 row">
-                                             <label for="html5-data1-input" class="col-md-3 col-form-label">Área total do terreno</label>
+                                             <label for="html5-data1-input" class="col-md-3 col-form-label">Área do terreno total</label>
                                              <div class="col-md-9">
                                                 <input class="form-control" type="number" id="html5-data1-input" required />
                                              </div>
                                           </div>
                                           <div class="mb-3 row">
-                                             <label for="html5-data2-input" class="col-md-3 col-form-label">Preço do Terreno</label>
+                                             <label for="html5-data2-input" class="col-md-3 col-form-label">Custo Efetivo do Terreno</label>
                                              <div class="col-md-9">
                                                 <input class="form-control" type="number" min="1" step="any" id="html5-data2-input" required />
                                              </div>
                                           </div>
                                           <div class="mb-3 row">
-                                             <label for="html5-data22-input" class="col-md-3 col-form-label">Custo médio de construção (por m2)</label>
+                                             <label for="html5-data22-input" class="col-md-3 col-form-label">Custo / m² Construído</label>
                                              <div class="col-md-9">
                                                 <input class="form-control" type="number" min="1" step="any" id="html5-data22-input" required />
                                              </div>
                                           </div>
                                           <div class="mb-3 row">
-                                             <label for="html5-data3-input" class="col-md-3 col-form-label">Preço médio por metro quadrado</label>
+                                             <label for="html5-data3-input" class="col-md-3 col-form-label">Custo / m² Privativo</label>
                                              <div class="col-md-9">
                                                 <input class="form-control" type="number" min="1" step="any" id="html5-data3-input" required />
                                              </div>
                                           </div>
                                           <div class="mb-3 row">
-                                             <label for="html5-data7-input" class="col-md-3 col-form-label">Área Construída (em m2)</label>
+                                             <label for="html5-data7-input" class="col-md-3 col-form-label">Área Construída (Equiv.)</label>
                                              <div class="col-md-9">
                                                 <input class="form-control" type="number" min="1" step="any" id="html5-data7-input" required />
                                              </div>
@@ -296,7 +296,7 @@
 
                                                 // Enviar o objeto JSON para a API
                                                 var xhr = new XMLHttpRequest();
-                                                xhr.open('POST', 'http://localhost:9999/api/insere_dados', true);
+                                                xhr.open('POST', 'http://localhost:5000/api/insere_dados', true);
                                                 xhr.setRequestHeader('Content-Type', 'application/json');
                                                 xhr.onreadystatechange = function() {
                                                    if (xhr.readyState === 4 && xhr.status === 200) {
@@ -304,6 +304,7 @@
                                                       console.log('Solicitação registrada com sucesso!');
                                                    }
                                                 };
+                                                xhr.send(JSON.stringify(formData));
                                                 }
                                              </script>
                                              <button type="submit" class="btn btn-primary" onclick="registrarSolicitacao()">Registrar Solicitação</button>
@@ -402,25 +403,25 @@
       <!-- / Layout wrapper -->
       <!-- Core JS -->
       <!-- build:js assets/vendor/js/core.js -->
-      <script src="./static/assets/vendor/libs/jquery/jquery.js"></script>
-      <script src="./static/assets/vendor/libs/popper/popper.js"></script>
-      <script src="./static/assets/vendor/js/bootstrap.js"></script>
-      <script src="./static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-      <script src="./static/assets/vendor/libs/node-waves/node-waves.js"></script>
-      <script src="./static/assets/vendor/libs/hammer/hammer.js"></script>
-      <script src="./static/assets/vendor/libs/i18n/i18n.js"></script>
-      <script src="./static/assets/vendor/libs/typeahead-js/typeahead.js"></script>
-      <script src="./static/assets/vendor/js/menu.js"></script>
+      <script src="./assets/vendor/libs/jquery/jquery.js"></script>
+      <script src="./assets/vendor/libs/popper/popper.js"></script>
+      <script src="./assets/vendor/js/bootstrap.js"></script>
+      <script src="./assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+      <script src="./assets/vendor/libs/node-waves/node-waves.js"></script>
+      <script src="./assets/vendor/libs/hammer/hammer.js"></script>
+      <script src="./assets/vendor/libs/i18n/i18n.js"></script>
+      <script src="./assets/vendor/libs/typeahead-js/typeahead.js"></script>
+      <script src="./assets/vendor/js/menu.js"></script>
       <!-- endbuild -->
       <!-- Vendors JS -->
-      <script src="./static/assets/vendor/libs/apex-charts/apexcharts.js"></script>
-      <script src="./static/assets/vendor/libs/swiper/swiper.js"></script>
-      <script src="./static/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
-      <script src="./static/assets/vendor/libs/select2/select2.js"></script>    
+      <script src="./assets/vendor/libs/apex-charts/apexcharts.js"></script>
+      <script src="./assets/vendor/libs/swiper/swiper.js"></script>
+      <script src="./assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+      <script src="./assets/vendor/libs/select2/select2.js"></script>    
       <!-- Main JS -->
-      <script src="./static/assets/js/main.js"></script>
+      <script src="./assets/js/main.js"></script>
       <!-- Page JS -->
-      <script src="./static/assets/js/offcanvas-send-invoice.js"></script>
-      <script src="./static/assets/js/forms-selects.js"></script>    
+      <script src="./assets/js/offcanvas-send-invoice.js"></script>
+      <script src="./assets/js/forms-selects.js"></script>    
    </body>
 </html>

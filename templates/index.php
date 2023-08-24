@@ -5,7 +5,7 @@
   class="light-style layout-navbar-fixed layout-menu-fixed"
   dir="ltr"
   data-theme="theme-default"
-  data-assets-path="./static/assets/"
+  data-assets-path="./assets/"
   data-template="vertical-menu-template">
   <head>
     <?php require('head.php'); ?>
@@ -180,34 +180,34 @@
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="./static/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="./static/assets/vendor/libs/popper/popper.js"></script>
-    <script src="./static/assets/vendor/js/bootstrap.js"></script>
-    <script src="./static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="./static/assets/vendor/libs/node-waves/node-waves.js"></script>
+    <script src="./assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="./assets/vendor/libs/popper/popper.js"></script>
+    <script src="./assets/vendor/js/bootstrap.js"></script>
+    <script src="./assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="./assets/vendor/libs/node-waves/node-waves.js"></script>
 
-    <script src="./static/assets/vendor/libs/hammer/hammer.js"></script>
-    <script src="./static/assets/vendor/libs/i18n/i18n.js"></script>
-    <script src="./static/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="./assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="./assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="./assets/vendor/libs/typeahead-js/typeahead.js"></script>
 
-    <script src="./static/assets/vendor/js/menu.js"></script>
+    <script src="./assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="./static/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>    
+    <script src="./assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>    
 
     <!-- Flat Picker -->
-    <script src="./static/assets/vendor/libs/moment/moment.js"></script>
-    <script src="./static/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+    <script src="./assets/vendor/libs/moment/moment.js"></script>
+    <script src="./assets/vendor/libs/flatpickr/flatpickr.js"></script>
     <!-- Form Validation -->
-    <script src="./static/assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js"></script>
-    <script src="./static/assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
-    <script src="./static/assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js"></script>
+    <script src="./assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js"></script>
+    <script src="./assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
+    <script src="./assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js"></script>
 
     <!-- Main JS -->
-    <script src="./static/assets/js/main.js"></script>
+    <script src="./assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="./static//assets/js/manager-viability-studies-requests.js"></script>    
+    <script src="./assets/js/manager-viability-studies-requests.js"></script>    
   </body>
 </html>

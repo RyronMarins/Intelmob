@@ -2,23 +2,22 @@
 import os
 import traceback
 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from openpyxl import load_workbook
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
 
 # Inicialização da aplicação Flask
-app = Flask(__name__, template_folder='templates', static_folder='static')
+app = Flask(__name__)
 app.debug = True  # Ativa o modo de depuração
-# Configure CORS para permitir solicitações de origens específicas
-CORS(app, origins=["http://localhost:9999"])
+CORS(app)  # habilitar CORS para todas as rotas
 
 # Configuração do banco de dados SQLAlchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://usr_dev_3:rHBmUibpQ8E42HV@localhost/dev_imob'
 db = SQLAlchemy(app)
 
-# Definição da classe Viability para mapear a tabela 'viability' no banco de dadosa
+# Definição da classe Viability para mapear a tabela 'viability' no banco de dados
 class Viability(db.Model): 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)
@@ -58,10 +57,6 @@ class Users(db.Model):
     registry_date = db.Column(db.DateTime, nullable=False, server_default='current_timestamp()')
     isManager = db.Column(db.Integer, default=0)
 
-@app.route('/')
-def index():
-    return render_template('new-viability-study.php')
-
 # Rota para inserir dados na tabela 'viability'
 @app.route('/api/insere_dados', methods=['POST'])
 def insere_dados():
@@ -71,7 +66,7 @@ def insere_dados():
         # Validação dos dados recebidos
         required_fields = [
             'areaTotal', 'precoTerreno', 'custoConstrucao', 'precoMedio',
-            'areaConstruida', 'precoMedioSugerido',
+            'areaConstruida', 'precoMedioSugerido', 'areaPrivativa',
             'quantidadeUnidades', 'email'
         ]
         for field in required_fields:
@@ -91,9 +86,10 @@ def insere_dados():
         try:
             sheet['O17'].value = data['areaTotal']
             sheet['W18'].value = data['precoTerreno']
-            sheet['O14'].value = data['custoConstrucao']
+            sheet['K13'].value = data['custoConstrucao']
             sheet['K15'].value = data['precoMedio']
-            sheet['G13'].value = (int(data['areaConstruida']) * int(data['areaTotal'])) / 6599
+            sheet['G13'].value = float(data['areaConstruida'])
+            sheet['G15'].value = float(data['areaPrivativa']) 
             sheet['G11'].value = data['precoMedioSugerido']
             sheet['O11'].value = data['quantidadeUnidades']
             wb.save(filename=planilha_caminho)
@@ -131,5 +127,4 @@ def insere_dados():
 
 # Execução da aplicação Flask
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 9999))
-    app.run(host="0.0.0.0", port=port)
+    app.run()
