@@ -1,0 +1,11 @@
+{
+    "name": "y/intelmob",
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.29"
+    },
+    "autoload": {
+        "psr-4": {
+            "Y\\Intelmob\\": "src/"
+        }
+    }
+}
